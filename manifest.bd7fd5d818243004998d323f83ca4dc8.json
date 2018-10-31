@@ -1,0 +1,9 @@
+{
+  "name": "My PWA Sample",
+  "short_name": "MyPWA",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "description": "This is a sample App!",
+  "background_color": "#f5f5f5"
+}
