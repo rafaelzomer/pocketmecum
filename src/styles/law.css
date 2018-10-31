@@ -1,0 +1,71 @@
+.law--container {
+  float: left;
+  overflow-y: scroll;
+  padding: 0.4em;
+  width: 100%;
+}
+
+.law--container mark
+{
+  background-color: #91a7ff;
+}
+
+.law--container .law--render {
+  width: 100%;
+  float: left;
+}
+
+.law--container .law--item {
+  padding-top: 1em;
+  float: left;
+  width: 100%;
+}
+
+.law--container .law--list * {
+  color: #0d012b !important;
+  font-size: 1.1em;
+  text-align: justify;
+}
+
+.law--container .law--showmore {
+  padding: .5em;
+  color: #4c6ef5 !important;
+  text-decoration: underline;
+  text-align: center;
+  float: left;
+  width: 100%;
+}
+
+.law--container .law--title {
+  width: 100%;
+  float: left;
+  font-size: 1.2em;
+  color: #4c6ef5;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.law--container .law--list {
+  width: 100%;
+  float: left;
+  border: 1px solid #ddd;
+  padding: 1em;
+  overflow-y: scroll;
+  height: 200px;
+}
+
+.law--container .law--list .highlight {
+  background-color: yellow;
+}
+
+.law--container .law--list table:first-of-type {
+  display: none;
+}
+
+.law--container .law--list img {
+  display: none;
+}
+
+.law--container .law--list p[style~="center"] font[size="2"] {
+  font-weight: bold;
+}

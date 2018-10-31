@@ -1,0 +1,46 @@
+{
+  "name": "pwa",
+  "author": "",
+  "version": "0.0.1",
+  "license": "MIT",
+  "description": "",
+  "keywords": [],
+  "scripts": {
+    "webpack": "webpack",
+    "start": "webpack-dev-server",
+    "build": "cross-env NODE_ENV=production npm run webpack",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "ava": {
+    "files": [
+      "test/**/*.js"
+    ],
+    "tap": true,
+    "failFast": true,
+    "concurrency": 5
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-1": "^6.24.1",
+    "babili-webpack-plugin": "^0.1.2",
+    "bundle-loader": "^0.5.5",
+    "cross-env": "^5.0.1",
+    "css-loader": "^0.28.11",
+    "file-loader": "^0.11.2",
+    "gh-pages": "^2.0.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^2.29.0",
+    "offline-plugin": "^4.8.3",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.6.1",
+    "webpack-merge": "^4.1.0",
+    "webpack-pwa-manifest": "^3.7.1"
+  },
+  "dependencies": {
+    "mark.js": "^8.11.1"
+  }
+}

@@ -1,0 +1,32 @@
+.search {
+  width: 100%;
+  float: left;
+  padding: .2em .2em;
+}
+
+.search--container {
+  width: 100%;
+  float: left;
+  padding: .2em;
+}
+
+.search--label {
+  padding-top: 0.7em;
+  padding-right: .7em;
+  width: 100%;
+  font-size: 0.8em;
+  text-align: left;
+  color: #888888;
+  float: left;
+  text-transform: uppercase;
+}
+
+.search--input {
+  font-size: 1.1em;
+  background-color: #ffffff;
+  width: 100%;
+  float: left;
+  padding: .3em .1em;
+  height: auto;
+  border-bottom: 2px solid #4c6ef5;
+}

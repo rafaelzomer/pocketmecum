@@ -1,0 +1,16 @@
+<div>
+  <div class="header">
+    <img id="logo" class="header--logo" src={logo} alt="" />
+  </div>
+  <div class="main--container">
+    <div class="search">
+      <div class="search--container">
+        <div class="search--label">Pesquisar</div>
+        <input placeholder="Digite aqui para pesquisar..." type="text" class="search--input" id="search-input" />
+      </div>
+    </div>
+    <div class="law--container">
+      <div oncreate={actions.handleCreate} class="law--render" />
+    </div>
+  </div>
+</div>
