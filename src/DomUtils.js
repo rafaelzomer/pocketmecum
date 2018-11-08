@@ -26,32 +26,45 @@ export function removeWithChild(nodes) {
   return newList;
 }
 
+export function cloneAll(all) {
+  var clonedList = [];
+  for (let i = 0; i < all.length; i++) {
+    clonedList.push(all[i].cloneNode(true));
+  }
+  return clonedList;
+}
+
 export function getRange(all, index, search, range) {
-  var rangeNodes = [];
+  // var rangeNodes = [];
   var minRange = index-range;
   var maxRange = index+range;
   for (var j=minRange, max=maxRange; j <= max; j++) {
-    var n = all[j].cloneNode(true);
+    var n = all[j];
+    // .cloneNode(true);
     if (typeof n !== 'undefined') {
       if (j == minRange) {
         var showmore = nodeMostrarMais.cloneNode(true);
-        rangeNodes.push(showmore);
-      } 
+        // rangeNodes.push(showmore);
+        all.splice(j, 0, showmore);
+        continue;
+      } else if (j == maxRange) {
+        var showmore = nodeMostrarMais.cloneNode(true);
+        all.splice(j, 0, showmore);
+        // rangeNodes.push(showmore);
+        continue;
+      }  
       if (n.tagName && n.tagName.toLowerCase() == 'a') {
         n.removeAttribute('href');
       }
-      rangeNodes.push(n);
-      if (j == maxRange) {
-        var showmore = nodeMostrarMais.cloneNode(true);
-        rangeNodes.push(showmore);
-      }
+      n.classList.add('law--show');
+      // rangeNodes.push(n);
     } else if (j == minRange) {
-      rangeNodes.push(stringToHtml('<h1> ZOMER </h1>'));
+      // rangeNodes.push(stringToHtml('<h1> ZOMER </h1>'));
     } else if (j == maxRange) {
-      rangeNodes.push(stringToHtml('<h1> ZOMER FIM </h1>'));
+      // rangeNodes.push(stringToHtml('<h1> ZOMER FIM </h1>'));
     }
   }
-  return rangeNodes;
+  return all;
 }
 
 export function stringToHtml(str, getAll) {

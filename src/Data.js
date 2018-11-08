@@ -6,8 +6,8 @@ export default [
     title: "Código Civil",
     html: codigoCivil
   },
-  {
-    title: "Código Penal",
-    html: codigoPenal
-  }
+  // {
+  //   title: "Código Penal",
+  //   html: codigoPenal
+  // }
 ];
