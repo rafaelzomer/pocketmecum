@@ -4,7 +4,8 @@ import { removeAccents } from "./StringUtils";
 import Mark from "mark.js";
 var currentTimeout = false;
 var nodeShowMore = stringToHtml('<a class="law--showmore"> Mostrar mais </a>');
-var nodeHasContent = stringToHtml('<a class="law--hascontent"> ... </a>');
+var nodeHasContent = stringToHtml('<a has-content="true" class="law--hascontent"> ... </a>');
+var ALL_NODES = {};
 
 function render(node, nodes) {
   node.innerHTML = "";
@@ -13,35 +14,83 @@ function render(node, nodes) {
   }
 }
 
-function addShowMore(foundNodes) {
-  var showMoreNode = nodeShowMore.cloneNode(true);
-  var index = foundNodes.length + 1;
-  showMoreNode.setAttribute('index', index);
-  foundNodes.push(showMoreNode);
-  showMoreNode.addEventListener('click', function(e) {
-    var target = e.target;
-    console.log('->>', target.getAttribute('index'));
-  });
+function checkInsert({target, nodes, parent, index, tipo, direction}) {
+  var nextIndex = index+1;
+  if (direction == 'top') {
+    nextIndex = index-1;
+  }
+  var nodeToInsert = nodes[nextIndex];
+  if (!nodeToInsert) {
+    parent.removeChild(target);
+    console.log('OPA');
+    return;
+  }
+  nodeToInsert.setAttribute('style', 'background: red');
+  if (direction === 'top') {
+    parent.insertBefore(nodeToInsert, target);
+  } else {
+    parent.insertBefore(nodeToInsert, target.nextSibling);
+  }
+  var nextElement = parent.querySelectorAll('[index="'+nextIndex+'"]')[0];
+  console.log('nextElement', nextElement);
+  if (!nextElement) {
+    var showMoreNode = createShowMore(nextIndex, tipo, direction);
+    if (direction == 'top') {
+      parent.insertBefore(showMoreNode, nodeToInsert);
+    } else {
+      parent.insertBefore(showMoreNode, nodeToInsert.nextSibling);
+      // parent.insertBefore(showMoreNode, nodeToInsert);
+    }
+  } else {
+    parent.removeChild(target.nextSibling.nextSibling);
+    parent.removeChild(target.nextSibling);
+  }
+  parent.removeChild(target);
 }
 
-function searchTextInHtml(html, text) {
+function createShowMore(index, tipo, direction) {
+  var showMoreNode = nodeShowMore.cloneNode(true);
+  showMoreNode.setAttribute('index', index);
+  showMoreNode.setAttribute('tipo', tipo);
+  showMoreNode.setAttribute('direction', direction);
+  showMoreNode.addEventListener('click', function(e) {
+    var target = e.target;
+    var index = parseInt(target.getAttribute('index'));
+    var tipo = target.getAttribute('tipo');
+    var direction = target.getAttribute('direction');
+    var parent = target.closest('.law--list');
+    var nodes = ALL_NODES[tipo];
+
+    if (direction == 'top') {
+      checkInsert({target, nodes, parent, index, tipo, direction});
+    }
+    if (direction == 'bottom') {
+      checkInsert({target, nodes, parent, index, tipo, direction});
+    }
+  });
+  return showMoreNode;
+}
+
+function addHasContent(foundNodes) {
+  var lastNode = foundNodes[foundNodes.length-1];
+  if (!lastNode.getAttribute('has-content')) {
+    foundNodes.push(nodeHasContent.cloneNode(true));
+  }
+}
+
+function searchTextInHtml(html, text, tipo) {
   var foundNodes = [];
   var allNodes = stringToHtml(html, true).getElementsByTagName("*");
   allNodes = removeWithChild(allNodes);
   allNodes = cloneAll(allNodes);
-  // console.log('allNodes', allNodes);
   for (var i = 0, max = allNodes.length; i < max; i++) {
     var node = allNodes[i];
-    foundNodes.push(node);
     if (hasParentTag(node, 'strike')) {
-      console.warn('FIXME TODO');
+      // console.warn('FIXME TODO');
       continue;
     }
     var compareText = removeAccents(node.innerText);
     if (compareText.indexOf(text) > -1) {
-      console.log('compareText', compareText, text);
-      // foundNodes = foundNodes.concat(getRange(allNodes, i, text, 2));
-      
       var RANGE = 2;
       var minContent = i-RANGE-1;
       var minRange = i-RANGE;
@@ -51,25 +100,28 @@ function searchTextInHtml(html, text) {
         var nodeInRange = allNodes[j];
         nodeInRange.classList.add('law--show');
         if (j == minRange) {
-          foundNodes.push(nodeHasContent.cloneNode(true));
+          addHasContent(foundNodes);
           continue;
         } else if (j == maxRange) {
-          foundNodes.push(nodeHasContent.cloneNode(true));
+          addHasContent(foundNodes);
           continue;
         } else if (j == minContent) {
-          addShowMore(foundNodes);
+          console.warn('COLOCA minContent');
+          foundNodes.push(createShowMore(j, tipo, 'bottom'));
           continue;
         } else if (j == maxContent) {
-          addShowMore(foundNodes);
+          console.warn('COLOCA maxContent');
+          foundNodes.push(createShowMore(j, tipo, 'top'));
           continue;
+        } else if (j == i) {
+          foundNodes.push(node);
         }
-        nodeInRange.classList.add('law--show');
       }
     }
   }
   var instance = new Mark(foundNodes);
   instance.mark(text);
-  return foundNodes;
+  return {foundNodes, allNodes};
 }
 
 function initSearch(text) {
@@ -78,12 +130,13 @@ function initSearch(text) {
   }
   var lawRender = document.getElementsByClassName("law--render")[0];
   var finalNodes = [];
-  for (var i = 0, max = Data.length; i < max; i++) {
-    var dataItem = Data[i];
+  for(var tipo in Data) {
+    var dataItem = Data[tipo];
     var html = dataItem.html;
-    var searchedNodes = searchTextInHtml(html, text);
+    var {foundNodes, allNodes} = searchTextInHtml(html, text, tipo);
     var lawList = stringToHtml(`<div class="law--list"></div>`);
-    render(lawList, searchedNodes);
+    render(lawList, foundNodes);
+    ALL_NODES[tipo] = allNodes;
     var nodeItem = stringToHtml(`
       <div class="law--item">
         <div class="law--title">${dataItem.title}</div>

@@ -20,6 +20,9 @@
   color: #0d012b !important;
   font-size: 1.1em;
   text-align: justify;
+  display: inline-block;
+  /* float: left;
+  width: 100%; */
 }
 
 .law--container .law--title {
@@ -37,11 +40,7 @@
   border: 1px solid #ddd;
   padding: 1em;
   overflow-y: scroll;
-  height: 200px;
-}
-
-.law--container .law--list * {
-  display: none;
+  height: 350px;
 }
 
 .law--container mark
@@ -52,7 +51,6 @@
 
 .law--container .law--list .law--hascontent {
   color: #ddd !important;
-  display: block;
   text-align: center;
   float: left;
   width: 100%;
@@ -66,7 +64,6 @@
   text-align: center;
   float: left;
   width: 100%;
-  display: block;
 }
 .law--container .law--list .law--showmore:hover {
   opacity: 0.6;
@@ -82,9 +79,4 @@
 
 .law--container .law--list p[style~="center"] font[size="2"] {
   font-weight: bold;
-}
-
-.law--container .law--list .law--show
-{
-  display: block !important;
 }

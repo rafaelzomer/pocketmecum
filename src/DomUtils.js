@@ -16,10 +16,8 @@ export function removeWithChild(nodes) {
   var newList = [];
   for (var i=0, max=nodes.length; i < max; i++) {
     var node = nodes[i];
-    if (i == 101 || i == 100) {
-      console.log('node', node, !node.childNodes[0].tagName);
-    }
-    if (!node.childNodes || !node.childNodes[0] || !node.childNodes[0].tagName) {
+    var child = node.childNodes && node.childNodes[0];
+    if (!child || child.tagName == 'A') {
       newList.push(node);
     }
   }
