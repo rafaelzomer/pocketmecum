@@ -22,5 +22,5 @@ document.addEventListener("DOMContentLoaded", () => {
     search(input.value);
   };
   logoImg.setAttribute('src', logo);
-  search('consumado');
+  search(true);
 });

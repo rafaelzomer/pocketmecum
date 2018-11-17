@@ -18,11 +18,16 @@
 
 .law--container .law--list * {
   color: #0d012b !important;
-  font-size: 1.1em;
+  font-size: 20px !important;
   text-align: justify;
-  display: inline-block;
+  /* display: inline-block; */
+  text-indent: 0px !important;
   /* float: left;
   width: 100%; */
+}
+
+.law--container .law--list .Artart {
+  display: none !important;
 }
 
 .law--container .law--title {
@@ -46,7 +51,30 @@
 .law--container mark
 {
   display: inline !important;
-  background-color: #91a7ff;
+  background-color: #e3e3e3;
+}
+
+.law--container .law--tagged
+{
+  background-color: yellow !important;
+}
+
+.law--container .law--actions {
+  width: 100%;
+  float: left;
+  text-align: right;
+  padding-top: 1em;;
+}
+
+.law--container button {
+  padding: .5em .9em;
+  border: 1px solid #ddd;
+  margin-left: .5em;
+}
+
+.law--container span {
+  display: inline-block;
+  padding: .5em .9em;
 }
 
 .law--container .law--list .law--hascontent {
@@ -69,12 +97,18 @@
   opacity: 0.6;
 }
 
-.law--container .law--list table:first-of-type {
+.law--container .law--list table:first-of-type, 
+.law--container .law--list table:first-of-type * {
   display: none;
 }
 
-.law--container .law--list img {
+.law--container .law--list img,
+.law--container .law--list img * {
   display: none;
+}
+
+.law--container .law--list u {
+  font-size: 0.6em;
 }
 
 .law--container .law--list p[style~="center"] font[size="2"] {
