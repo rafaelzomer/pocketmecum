@@ -1,0 +1,9 @@
+{
+  "name": "Pocketmecum",
+  "short_name": "Pocketmecum",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "description": "O vademecum de bolso!",
+  "background_color": "#000000"
+}

@@ -10,7 +10,7 @@ var __wpo = {
     ],
     "optional": [
       "./manifest.1ef9a020.js",
-      "./manifest.bd7fd5d818243004998d323f83ca4dc8.json"
+      "./manifest.4aa9295b03f5f1f1122d3f8a010bdea6.json"
     ]
   },
   "externals": [],
@@ -19,12 +19,12 @@ var __wpo = {
     "88bc6fcd2a23eae9ed2b8a2527ac77a6ae9126a2": "./bundle.1ef9a020.js",
     "8a451c294e782ded56bec288995d43e8af7d8882": "./vendor.1ef9a020.js",
     "b42bc38f14b0aca0e3d0f5b94383029dd6b14d50": "./manifest.1ef9a020.js",
-    "35ebd5dc8a3c4f4d4b2dc7320a595b5d5f77a595": "./",
-    "da4d5aeea828b0a28622e8487022cb2094674e62": "./manifest.bd7fd5d818243004998d323f83ca4dc8.json"
+    "cc342d9109123435425d618c67aecf2ed995c5d9": "./",
+    "11e6bcaf71bfaff40e35ce47ef1ec5dcbd9e74c4": "./manifest.4aa9295b03f5f1f1122d3f8a010bdea6.json"
   },
   "strategy": "changed",
   "responseStrategy": "cache-first",
-  "version": "2018-11-17 09:07:02",
+  "version": "2018-11-17 09:08:38",
   "name": "webpack-offline",
   "pluginVersion": "4.8.3",
   "relativePaths": true
