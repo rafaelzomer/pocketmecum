@@ -2,29 +2,29 @@ var __wpo = {
   "assets": {
     "main": [
       "./",
-      "./bundle.d6bc5e03.js",
-      "./vendor.d6bc5e03.js"
+      "./bundle.1ef9a020.js",
+      "./vendor.1ef9a020.js"
     ],
     "additional": [
       "./logo-cca58147014831b80866c295ce0a9e2f.svg"
     ],
     "optional": [
-      "./manifest.d6bc5e03.js",
+      "./manifest.1ef9a020.js",
       "./manifest.bd7fd5d818243004998d323f83ca4dc8.json"
     ]
   },
   "externals": [],
   "hashesMap": {
     "64ca7573c4416245c783e1aa5aca26804020d45f": "./logo-cca58147014831b80866c295ce0a9e2f.svg",
-    "c0df9d99c55a5d46cbba257f05164736a1faae2b": "./bundle.d6bc5e03.js",
-    "8a451c294e782ded56bec288995d43e8af7d8882": "./vendor.d6bc5e03.js",
-    "b14889ab57bf2a1d1fa1a399f02467bef2337627": "./manifest.d6bc5e03.js",
-    "05ad79721cb6bb5f18234c9bcad7108a1439c4f0": "./",
+    "88bc6fcd2a23eae9ed2b8a2527ac77a6ae9126a2": "./bundle.1ef9a020.js",
+    "8a451c294e782ded56bec288995d43e8af7d8882": "./vendor.1ef9a020.js",
+    "b42bc38f14b0aca0e3d0f5b94383029dd6b14d50": "./manifest.1ef9a020.js",
+    "35ebd5dc8a3c4f4d4b2dc7320a595b5d5f77a595": "./",
     "da4d5aeea828b0a28622e8487022cb2094674e62": "./manifest.bd7fd5d818243004998d323f83ca4dc8.json"
   },
   "strategy": "changed",
   "responseStrategy": "cache-first",
-  "version": "2018-11-9 19:37:57",
+  "version": "2018-11-17 09:07:02",
   "name": "webpack-offline",
   "pluginVersion": "4.8.3",
   "relativePaths": true
