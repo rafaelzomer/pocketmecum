@@ -80,11 +80,11 @@ const common = {
       template: 'index.ejs'
     }),
     new WebpackPwaManifest({
-      name            : 'My PWA Sample',
+      name            : 'Pocketmecum',
       icons           : [],
-      short_name      : 'MyPWA',
-      description     : 'This is a sample App!',
-      background_color: '#f5f5f5'
+      short_name      : 'Pocketmecum',
+      description     : 'O vademecum de bolso!',
+      background_color: '#000000'
     })
   ]
 };
